@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+       
+        body{
+  background-image: url('teatura.jpg');
+  padding: 0 10px;
+  height: 98vh;
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+        h1{
+            font-size: 44p;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        input{
+            border-radius: 10px;
+            width: 250px;
+            height: 35px;
+            text-indent: 5px;
+        }
+         select{
+            border-radius: 10px;
+            width: 250px;
+            height: 35px;
+            text-indent: 5px;
+        }
+        input:focus{
+            outline: none;
+        }
+        fieldset{
+            width: 50%;
+            height: 750px;
+            background-color:#c7241b;
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+            box-shadow: 0px 0px 5px 5px;
+        }
+        table{
+            font-size: 22px;
+        }
+        td{
+            line-height: 50px;
+        }
+        button{
+            width: 120px;
+            height: 30px;
+            background-color: chartreuse;
+        }
+        button:hover{
+            background-color: darkgreen;
+        }
+        th{
+            font-size: 44p;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+   
+</head>
+<body><br><br><br>
+    <center>
+        
+            <fieldset>
+                <table>
+                    <h1>MovieHouse</h1>
+                    <tr>
+                       <th>Firstname</th>
+                       <td>:</td>
+                       <td><input type="text" name="name" id="name1" placeholder="Enter your firstname"></td>
+                    </tr>
+                    <tr>
+                        <th>Secondname</th>
+                        <td>:</td>
+                        <td><input type="text" name="name" id="name2" placeholder="Enter your secondname"></td>
+                     </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>:</td>
+                        <td><input type="email" name="email" id="email" placeholder="Enter your email"></td>
+                     </tr>
+                     <tr>
+                        <th>Contact No</th>
+                        <td>:</td>
+                        <td><input type="number" name="Number" id="number1" placeholder="Enter your phone number"></td>
+                     </tr>
+                     <tr>
+                        <th>Purpose</th>
+                        <td>:</td>
+                        <td><input type="text" name="purpose" id="purpose1" placeholder="Enter your purpose"></td>
+                     </tr>
+                     <tr>
+                        <th>Date</th>
+                        <td>:</td>
+                        <td><input type="date" name="date" id="date1"></td>
+                     </tr>
+                     <tr>
+                        <th>Time</th>
+                        <td>:</td>
+                        <td><input type="time" name="time" id="time1"></td>
+                     </tr>
+                     <tr>
+                        <th>Movie</th>
+                        <td>:</td>
+                        <td><select id="film">
+                           
+                            <option value="Faster">Faster</option>
+                            <option value="The Purge">The Purge</option>
+                            <option value="Recep Ivedik">Recep Ivedik</option>
+                            <option value="Hustle">Hustle</option>
+                            <option value="Dont'Breathe">Don't Breathe</option>
+                            <option value="Bad Boys">Bad Boys</option>
+                            <option value="King Arthur">King Arthur</option>
+                            
+                          </select></td>
+                     </tr>
+                     <tr>
+                        <th>No of people</th>
+                        <td>:</td>
+                        <td><input type="number" name="Number" id="number2" placeholder="Enter number of people"></td>
+                     </tr>
+                     <tr>
+                        <th>No of tickets</th>
+                        <td>:</td>
+                        <td><input type="number" name="Number" id="tickets" placeholder="Enter number of tickets"></td>
+                     </tr>
+                     <tr>
+                        <th>Card Number</th>
+                        <td>:</td>
+                        <td><input type="number" name="Number" id="number3" placeholder="Enter your card number"></td>
+                     </tr>
+
+                </table>
+                <br>
+                <div>
+                    <tr>
+                        <td>
+                            <button id="Insbtn">SEND</button>
+                           
+
+                        </td>
+                        <td>
+                            <button id="Updbtn">UPDATE</button>
+                           
+
+                        </td>
+                        <td>
+                            <button id="Selbtn">SELECT</button>
+                           
+
+                        </td>
+                        <td>
+                            
+                            <button id="Delbtn">DELETE</button>
+
+                        </td>
+                    </tr>
+                </div>
+            </fieldset>
+       
+    </center>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyArWqbEWE1J3bYvx8NmPFTVoHV-mQOKCz0",
+          authDomain: "moviehouse-2d774.firebaseapp.com",
+          projectId: "moviehouse-2d774",
+          storageBucket: "moviehouse-2d774.appspot.com",
+          messagingSenderId: "603653058372",
+          appId: "1:603653058372:web:5df19c310a1a4e471d3111"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import{getDatabase,ref,set,update,remove,get,child}
+         from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js"
+
+           const db= getDatabase();
+           var name = document.getElementById("name1");
+           var secondname = document.getElementById("name2");
+           var email = document.getElementById("email");
+           var contact = document.getElementById("number1");
+           var purpose = document.getElementById("purpose1");
+           var date = document.getElementById("date1");
+           var time = document.getElementById("time1");
+           var film = document.getElementById("film");
+           var people = document.getElementById("number2");
+           var tickets = document.getElementById("tickets");
+
+           var post = document.getElementById("number3");
+           
+           var insert = document.getElementById("Insbtn");
+           var updbtn = document.getElementById("Updbtn");
+           var selbtn = document.getElementById("Selbtn");
+          
+           var del = document.getElementById("Delbtn");
+
+           function Insert(){
+            set(ref(db,"Person/"+purpose.value),{
+               NameOfPerson:name.value,
+               SecondNameOfPerson:secondname.value,
+               Email:email.value,
+               Contact:contact.value,
+               Purpose:purpose.value,
+               Date:date.value,
+               Time:time.value,
+               Film:film.value,
+               NumberOfPeople:people.value,
+               Post:post.value,
+               NumberOfTickets:tickets.value
+
+              
+
+            })
+            .then(()=>{
+                alert("data stored succesfully");
+                
+
+                name.value="";
+                secondname.value = "";
+                email.value  = "";
+                contact.value  = "";
+                purpose.value  ="";
+                date.value  = "";
+                time.value  = "";
+                film.value  = "";
+                people.value  = "";
+                tickets.value  = "";
+                post.value  = "";
+            })
+            .catch((error)=>{
+                alert("unsuccessful, error"+error)
+            })
+        }
+        function UpdateV(){
+            update(ref(db,"Person/"+purpose.value),{
+                NameOfPerson:name.value,
+               SecondNameOfPerson:secondname.value,
+               Email:email.value,
+               Contact:contact.value,
+               Purpose:purpose.value,
+               Date:date.value,
+               Time:time.value,
+               Film:film.value,
+               NumberOfPeople:people.value,
+               Post:post.value,
+               NumberOfTickets:tickets.value
+
+
+            })
+            .then(()=>{
+                alert("data updated succesfully");
+                name.value="";
+                secondname.value = "";
+                email.value  = "";
+                contact.value  = "";
+                purpose.value  ="";
+                date.value  = "";
+                time.value  = "";
+                film.value  = "";
+                people.value  = "";
+                tickets.value  = "";
+                post.value  = "";
+            })
+            .catch((error)=>{
+                alert("unsuccessful, error"+error)
+            })
+        }
+        function Delete(){
+            remove(ref(db,"Person/"+purpose.value))
+            .then(()=>{
+                alert("data removed succesfully");
+                name.value="";
+                secondname.value = "";
+                email.value  = "";
+                contact.value  = "";
+                purpose.value  ="";
+                date.value  = "";
+                time.value  = "";
+                film.value  = "";
+                people.value  = "";
+                tickets.value  = "";
+                post.value  = "";
+            })
+            .catch((error)=>{
+                alert("unsuccessful, error"+error)
+            })
+        }
+        function Select(){
+             const dbref=ref(db);
+             get(child(dbref,"Person/"+purpose.value)).then((snapshot)=>{
+                    if(snapshot.exists())
+                    {
+                        name.value=snapshot.val().NameOfPerson;
+                        secondname.value=snapshot.val().SecondNameOfPerson;
+                        email.value  = snapshot.val().Email;
+                        contact.value  = snapshot.val().Contact;
+                        purpose.value  = snapshot.val().Purpose;
+                        date.value  = snapshot.val().Date;
+                        time.value  = snapshot.val().Time;
+                        film.value  = snapshot.val().Film;
+                        people.value  = snapshot.val().NumberOfPeople;
+                        tickets.value  = snapshot.val().NumberOfTickets;
+                        post.value  = snapshot.val().Post;
+
+
+
+                    }
+                    else{
+                        alert("No data found");
+                        name.value="";
+                        secondname.value = "";
+                        email.value  = "";
+                       contact.value  = "";
+                        purpose.value  ="";
+                       date.value  = "";
+                       time.value  = "";
+                       film.value  = "";
+                       people.value  = "";
+                       tickets.value  = "";
+                       post.value  = "";
+                    }
+                
+             })
+             .catch((error)=>{
+                 alert("unsuccessful, error"+error);
+
+             });
+        }
+        
+
+        
+
+        insert.addEventListener('click',Insert);
+        updbtn.addEventListener('click',UpdateV);
+        del.addEventListener('click',Delete);
+        selbtn.addEventListener('click',Select);
+
+         
+
+
+
+      </script>
+
+
+    
+
+</body>
+</html>

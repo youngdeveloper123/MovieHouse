@@ -1,0 +1,102 @@
+.loginbox{
+    width: 520px;
+    height: 500px;
+   background-color:#c7241b;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 5px;
+ 
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+
+}
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+}
+.loginbox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+
+}
+.loginbox input{
+
+    width: 100%;
+    margin-bottom: 20px;
+}
+.loginbox input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #FFF;
+    background: transparent;
+    outline:none;
+    height: 40px;
+    color: #FFF;
+    font-size: 16px;
+}
+.loginbox input[type="submit"]{
+
+    border: none;
+    outline: none;
+    height: 40px;
+    background: fb2525;
+    color: #FFF;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.loginbox input[type="submit"]{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+
+}
+.loginbox input[type="submit"]:active{
+    cursor: pointer;
+    background: #000;
+    color: #ffc107;
+
+}
+
+.loginbox a{
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 20px;
+    color: darkgrey;
+}
+.loginbox a:hover{
+    color: #ffc107;
+}
+.background-image{
+    background-image: url('theatre.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+h2{
+   
+    font-family: 'Montserrat', sans-serif;
+}
+::placeholder{
+    color: #000;
+}
